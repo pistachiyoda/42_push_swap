@@ -1,0 +1,3 @@
+[submodule "42_libft_new"]
+	path = 42_libft_new
+	url = https://github.com/pistachiyoda/42_libft_new.git
