@@ -14,6 +14,12 @@ typedef struct s_node
     struct s_node* prev;    
 }   t_node;
 
-t_node *create_nodes(int num, char **num_list);
+typedef struct s_stuck
+{
+    t_node  *top;
+    t_node  *bottom;
+}   t_stuck;
+
+void    create_nodes(int num, char **num_list, t_stuck *stuck);
 t_node	*create_node(int value);
 #endif
