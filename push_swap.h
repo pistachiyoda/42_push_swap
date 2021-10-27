@@ -9,12 +9,11 @@
 
 typedef struct s_node
 {
-    int position;
     int value;
     struct s_node* next;
     struct s_node* prev;    
 }   t_node;
 
-bool    create_nodes(int num, char **num_list);
-t_node	*create_node(int value, int position);
+t_node *create_nodes(int num, char **num_list);
+t_node	*create_node(int value);
 #endif
