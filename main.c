@@ -6,15 +6,17 @@ int main(int argc, char **argv)
 
     stuck_a = (t_stuck *)malloc(sizeof(t_stuck));
     create_nodes(argc - 1, argv, stuck_a);
+    swap_b(stuck_a);
     node = stuck_a->top;
     int n = 10;
     while (n--)
     {
         printf("node:%p\n", node);
         printf("node->value:%d\n", node->value);
-        printf("==============================\n");
         printf("node->prev:%p\n", node->prev);
-        node = node->prev;
+        printf("node->next:%p\n", node->next);
+        printf("==============================\n");
+        node = node->next;
     }
     return (0);
 }
