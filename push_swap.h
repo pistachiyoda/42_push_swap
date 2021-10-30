@@ -22,8 +22,13 @@ typedef struct s_stuck
 
 void    create_nodes(int num, char **num_list, t_stuck *stuck);
 t_node	*create_node(int value);
+
 // operations/swap.c
 void    swap_a(t_stuck *a);
 void    swap_b(t_stuck *b);
 void    swap_sametime(t_stuck *a, t_stuck *b);
+
+// operations/push.c
+void    push_a(t_stuck *a, t_stuck *b);
+void    push_b(t_stuck *a, t_stuck *b);
 #endif
