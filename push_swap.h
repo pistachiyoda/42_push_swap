@@ -26,7 +26,7 @@ t_node	*create_node(int value);
 // operations/swap.c
 void    swap_a(t_stuck *a);
 void    swap_b(t_stuck *b);
-void    swap_sametime(t_stuck *a, t_stuck *b);
+void    swap_s(t_stuck *a, t_stuck *b);
 
 // operations/push.c
 void    push_a(t_stuck *a, t_stuck *b);

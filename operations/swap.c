@@ -39,9 +39,9 @@ void    swap_b(t_stuck *b)
     ft_putstr_fd("sb\n", 0);
 }
 
-void    swap_sametime(t_stuck *a, t_stuck *b)
+void    swap_s(t_stuck *a, t_stuck *b)
 {
-    swap_a(a);
-    swap_b(b);
+    swap_top(a);
+    swap_top(b);
     ft_putstr_fd("ss\n", 0);
 }
