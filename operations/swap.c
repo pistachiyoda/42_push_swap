@@ -1,11 +1,32 @@
 #include "../push_swap.h"
 
+int	cnt_doubly_linked_lstsize(t_stuck *stuck)
+{
+	int	cnt;
+    t_node *node;
+
+    node = stuck->top;
+	if (node == NULL)
+		return (0);
+	cnt = 1;
+	while (node->next != stuck->top)
+	{
+		node = node->next;
+		cnt++;
+	}
+	return (cnt);
+}
+
 void    swap_top(t_stuck *stuck)
 {
     t_node *top_to_second;
     t_node *second_to_top;
     t_node *third;
     t_node *bottom;
+    int stuck_size;
+
+    if (stuck_size <= 1)
+        return ;
 
     top_to_second = stuck->top;
     second_to_top = top_to_second->next;
@@ -25,14 +46,12 @@ void    swap_top(t_stuck *stuck)
     stuck->top = second_to_top;
 }
 
-//todo:Do nothing if thereis only one or no elements
 void    swap_a(t_stuck *a)
 {
     swap_top(a);
     ft_putstr_fd("sa\n", 0);
 }
 
-//todo:Do nothing if thereis only one or no elements
 void    swap_b(t_stuck *b)
 {
     swap_top(b);
