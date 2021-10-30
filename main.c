@@ -10,7 +10,7 @@ int main(int argc, char **argv)
     create_nodes(argc - 1, argv, stuck_a);
     create_nodes(argc - 1, argv, stuck_b);
 
-    rotate_r(stuck_a, stuck_b);
+    rev_rotate_b(stuck_b);
 
     node = stuck_a->top;
     int n = 10;

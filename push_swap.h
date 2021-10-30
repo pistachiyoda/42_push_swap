@@ -36,4 +36,9 @@ void    push_b(t_stuck *a, t_stuck *b);
 void rotate_a(t_stuck *a);
 void rotate_b(t_stuck *b);
 void rotate_r(t_stuck *a, t_stuck *b);
+
+// operations/recers_rotate.c
+void rev_rotate_a(t_stuck *a);
+void rev_rotate_b(t_stuck *b);
+void rev_rotate_r(t_stuck *a, t_stuck *b);
 #endif
