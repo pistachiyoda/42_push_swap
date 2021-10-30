@@ -31,4 +31,9 @@ void    swap_sametime(t_stuck *a, t_stuck *b);
 // operations/push.c
 void    push_a(t_stuck *a, t_stuck *b);
 void    push_b(t_stuck *a, t_stuck *b);
+
+// operations/rotate.c
+void rotate_a(t_stuck *a);
+void rotate_b(t_stuck *b);
+void rotate_r(t_stuck *a, t_stuck *b);
 #endif
