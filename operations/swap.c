@@ -1,22 +1,5 @@
 #include "../push_swap.h"
 
-int	cnt_doubly_linked_lstsize(t_stuck *stuck)
-{
-	int	cnt;
-    t_node *node;
-
-    node = stuck->top;
-	if (node == NULL)
-		return (0);
-	cnt = 1;
-	while (node->next != stuck->top)
-	{
-		node = node->next;
-		cnt++;
-	}
-	return (cnt);
-}
-
 void    swap_top(t_stuck *stuck)
 {
     t_node *top_to_second;
@@ -25,6 +8,7 @@ void    swap_top(t_stuck *stuck)
     t_node *bottom;
     int stuck_size;
 
+    stuck_size = cnt_dllist(stuck);
     if (stuck_size <= 1)
         return ;
 
