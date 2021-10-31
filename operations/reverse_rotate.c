@@ -6,6 +6,9 @@ void rev_rotate(t_stuck *x)
     t_node *old_bottom_prev;
     t_node *old_bottom;
 
+    if (x->top == NULL)
+        return;
+
     old_top = x->top;
     old_bottom_prev = x->bottom->prev;
     old_bottom = x->bottom;

@@ -11,6 +11,13 @@ void    swap_top(t_stuck *stuck)
     stuck_size = cnt_dllist(stuck);
     if (stuck_size <= 1)
         return ;
+    if (stuck_size == 2)
+    {
+        top_to_second = stuck->top;
+        stuck->top = stuck->bottom;
+        stuck->bottom = top_to_second;
+        return;
+    }
 
     top_to_second = stuck->top;
     second_to_top = top_to_second->next;
