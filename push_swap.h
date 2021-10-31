@@ -41,4 +41,7 @@ void rotate_r(t_stuck *a, t_stuck *b);
 void rev_rotate_a(t_stuck *a);
 void rev_rotate_b(t_stuck *b);
 void rev_rotate_r(t_stuck *a, t_stuck *b);
+
+// operations/cnt_dllist.c
+int     cnt_dllist(t_stuck *stuck);
 #endif

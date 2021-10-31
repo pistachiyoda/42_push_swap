@@ -7,32 +7,53 @@ void    connect_nodes(t_node *node_1, t_node *node_2)
     node_2->prev = node_1;
 }
 
-void    push(t_stuck *x, t_stuck *y)
+t_node  *handle_from(t_stuck *stuck)
 {
-    t_node  *y_second;
+    int     cnt_list;
+    t_node  *top;
 
-    if (y == NULL)
+    cnt_list = cnt_dllist(stuck);
+    if (cnt_list == 0)
+        return (NULL);
+    top = stuck->top;
+    if (cnt_list == 1)
+    {
+        stuck->bottom = NULL;
+        stuck->top = NULL;
+    }
+    else
+    {
+        connect_nodes(stuck->bottom, stuck->top->next);
+        stuck->top = stuck->bottom->next;
+    }
+    return (top);
+}
+
+void    handle_to(t_stuck *stuck, t_node *node)
+{
+    int     cnt_list;
+
+    if (node == NULL)
         return;
+    cnt_list = cnt_dllist(stuck);
+    stuck->top = node;
+    if (cnt_list == 0)
+    {
+        stuck->bottom = node;
+        connect_nodes(node, node);
+        return;
+    }
+    connect_nodes(node, stuck->bottom->next);
+    connect_nodes(stuck->bottom, node);
+    stuck->top = node;
+}
 
-    y_second = y->top->next;
-    
-    // yのbottomのnextをyのsecond(y->top->next)に変更
-    // yのsecondのprevをyのbottomのnextに変更
-    connect_nodes(y->bottom, y_second);
-    
-    // xのbottomのnextをyのtopに変更
-    // yのtopのprevをxのbottomに変更
-    connect_nodes(x->bottom, y->top);
+void    push(t_stuck *to, t_stuck *from)
+{
+    t_node  *node;
 
-    // yのtopのnextをxのtopに変更
-    // xのtopのprevをyのtopに変更
-    connect_nodes(y->top, x->top); // ここでy_topのnextが変わる
-
-    // xのtop変更
-    x->top =y->top;
-    
-    // yのtopを変更
-    y->top = y_second;
+    node = handle_from(from);
+    handle_to(to, node);
 }
 
 // take the first element at the top of b and put it at the top of a. Do nothing if b is empty
