@@ -7,48 +7,48 @@ void    connect_nodes(t_node *node_1, t_node *node_2)
     node_2->prev = node_1;
 }
 
-t_node  *handle_from(t_stuck *stuck)
+t_node  *handle_from(t_stack *stack)
 {
     int     cnt_list;
     t_node  *top;
 
-    cnt_list = cnt_dllist(stuck);
+    cnt_list = cnt_dllist(stack);
     if (cnt_list == 0)
         return (NULL);
-    top = stuck->top;
+    top = stack->top;
     if (cnt_list == 1)
     {
-        stuck->bottom = NULL;
-        stuck->top = NULL;
+        stack->bottom = NULL;
+        stack->top = NULL;
     }
     else
     {
-        connect_nodes(stuck->bottom, stuck->top->next);
-        stuck->top = stuck->bottom->next;
+        connect_nodes(stack->bottom, stack->top->next);
+        stack->top = stack->bottom->next;
     }
     return (top);
 }
 
-void    handle_to(t_stuck *stuck, t_node *node)
+void    handle_to(t_stack *stack, t_node *node)
 {
     int     cnt_list;
 
     if (node == NULL)
         return;
-    cnt_list = cnt_dllist(stuck);
-    stuck->top = node;
+    cnt_list = cnt_dllist(stack);
+    stack->top = node;
     if (cnt_list == 0)
     {
-        stuck->bottom = node;
+        stack->bottom = node;
         connect_nodes(node, node);
         return;
     }
-    connect_nodes(node, stuck->bottom->next);
-    connect_nodes(stuck->bottom, node);
-    stuck->top = node;
+    connect_nodes(node, stack->bottom->next);
+    connect_nodes(stack->bottom, node);
+    stack->top = node;
 }
 
-void    push(t_stuck *to, t_stuck *from)
+void    push(t_stack *to, t_stack *from)
 {
     t_node  *node;
 
@@ -57,7 +57,7 @@ void    push(t_stuck *to, t_stuck *from)
 }
 
 // take the first element at the top of b and put it at the top of a. Do nothing if b is empty
-void    push_a(t_stuck *a, t_stuck *b)
+void    push_a(t_stack *a, t_stack *b)
 {
     if (b == NULL)
         return ;
@@ -66,7 +66,7 @@ void    push_a(t_stuck *a, t_stuck *b)
 }
 
 // take the first element at the top of a and put it at the top of b. Do nothing if a is empty
-void    push_b(t_stuck *a, t_stuck *b)
+void    push_b(t_stack *a, t_stack *b)
 {
     if (a ==NULL)
         return ;

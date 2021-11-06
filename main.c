@@ -1,18 +1,18 @@
 #include "push_swap.h"
+
 int main(int argc, char **argv)
 {
     t_node *node;
-    t_stuck *stuck_a;
-    t_stuck *stuck_b;
+    t_stack *stack_a;
+    t_stack *stack_b;
 
-    stuck_a = (t_stuck *)malloc(sizeof(t_stuck));
-    stuck_b = (t_stuck *)malloc(sizeof(t_stuck));
-    create_nodes(argc - 1, argv, stuck_a);
-    create_nodes(argc - 1, argv, stuck_b);
+    stack_a = (t_stack *)malloc(sizeof(t_stack));
+    stack_b = (t_stack *)malloc(sizeof(t_stack));
+    create_nodes(argc - 1, argv, stack_a);
 
-    rev_rotate_b(stuck_b);
+    swap_a(stack_a);
 
-    node = stuck_a->top;
+    node = stack_a->top;
     int n = 10;
     printf("+++stack a+++\n");
     while (n--)
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
         node = node->next;
     }
     printf("\n");
-    node = stuck_b->top;
+    node = stack_b->top;
     n = 10;
     printf("+++stack b+++\n");
     while (n--)

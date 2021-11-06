@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void rev_rotate(t_stuck *x)
+void rev_rotate(t_stack *x)
 {
     t_node *old_top;
     t_node *old_bottom_prev;
@@ -19,21 +19,21 @@ void rev_rotate(t_stuck *x)
 }
 
 //  shift down all elements of stack a by 1. The last element becomes the first one.
-void rev_rotate_a(t_stuck *a)
+void rev_rotate_a(t_stack *a)
 {
     rev_rotate(a);
     ft_putstr_fd("rra\n", 0);
 }
 
 // shift down all elements of stack b by 1. The last element becomes the first one.
-void rev_rotate_b(t_stuck *b)
+void rev_rotate_b(t_stack *b)
 {
     rev_rotate(b);
     ft_putstr_fd("rrb\n", 0);
 }
 
 // rra and rrb at the same time.
-void rev_rotate_r(t_stuck *a, t_stuck *b)
+void rev_rotate_r(t_stack *a, t_stack *b)
 {
     rev_rotate(a);
     rev_rotate(b);

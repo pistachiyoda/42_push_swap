@@ -14,34 +14,34 @@ typedef struct s_node
     struct s_node* prev;    
 }   t_node;
 
-typedef struct s_stuck
+typedef struct s_stack
 {
     t_node  *top;
     t_node  *bottom;
-}   t_stuck;
+}   t_stack;
 
-void    create_nodes(int num, char **num_list, t_stuck *stuck);
+void    create_nodes(int num, char **num_list, t_stack *stack);
 t_node	*create_node(int value);
 
 // operations/swap.c
-void    swap_a(t_stuck *a);
-void    swap_b(t_stuck *b);
-void    swap_s(t_stuck *a, t_stuck *b);
+void    swap_a(t_stack *a);
+void    swap_b(t_stack *b);
+void    swap_s(t_stack *a, t_stack *b);
 
 // operations/push.c
-void    push_a(t_stuck *a, t_stuck *b);
-void    push_b(t_stuck *a, t_stuck *b);
+void    push_a(t_stack *a, t_stack *b);
+void    push_b(t_stack *a, t_stack *b);
 
 // operations/rotate.c
-void rotate_a(t_stuck *a);
-void rotate_b(t_stuck *b);
-void rotate_r(t_stuck *a, t_stuck *b);
+void rotate_a(t_stack *a);
+void rotate_b(t_stack *b);
+void rotate_r(t_stack *a, t_stack *b);
 
 // operations/recers_rotate.c
-void rev_rotate_a(t_stuck *a);
-void rev_rotate_b(t_stuck *b);
-void rev_rotate_r(t_stuck *a, t_stuck *b);
+void rev_rotate_a(t_stack *a);
+void rev_rotate_b(t_stack *b);
+void rev_rotate_r(t_stack *a, t_stack *b);
 
 // operations/cnt_dllist.c
-int     cnt_dllist(t_stuck *stuck);
+int     cnt_dllist(t_stack *stack);
 #endif

@@ -23,7 +23,7 @@ void    append_node(t_node *first_node, t_node *new_node)
     new_node->prev = current_node;
 }
 
-void   create_nodes(int num, char **num_list, t_stuck *stuck)
+void   create_nodes(int num, char **num_list, t_stack *stack)
 {
     int value;
     int cnt;
@@ -36,17 +36,17 @@ void   create_nodes(int num, char **num_list, t_stuck *stuck)
         value = ft_atoi(*num_list);
         node = create_node(value);
         if (cnt == 0)
-            stuck->top = node;
+            stack->top = node;
         else
-            append_node(stuck->top, node);
+            append_node(stack->top, node);
         num_list++;
         cnt++;
     }
-    stuck->bottom = node;
+    stack->bottom = node;
     
-    node = stuck->top;
-    node->prev = stuck->bottom;
+    node = stack->top;
+    node->prev = stack->bottom;
 
-    node = stuck->bottom;
-    node->next = stuck->top;
+    node = stack->bottom;
+    node->next = stack->top;
 }
