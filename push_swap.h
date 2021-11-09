@@ -44,4 +44,7 @@ void rev_rotate_r(t_stack *a, t_stack *b);
 
 // operations/cnt_dllist.c
 int     cnt_dllist(t_stack *stack);
+
+// main sort
+void    quicksort(t_stack *a, t_stack *b);
 #endif

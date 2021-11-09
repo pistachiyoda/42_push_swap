@@ -10,32 +10,33 @@ int main(int argc, char **argv)
     stack_b = (t_stack *)malloc(sizeof(t_stack));
     create_nodes(argc - 1, argv, stack_a);
 
-    swap_a(stack_a);
+    quicksort(stack_a, stack_b);
 
     node = stack_a->top;
-    int n = 10;
-    printf("+++stack a+++\n");
-    while (n--)
-    {
-        // printf("node:%p\n", node);
-        printf("node->value:%d\n", node->value);
-        // printf("node->prev:%p\n", node->prev);
-        // printf("node->next:%p\n", node->next);
-        // printf("==============================\n");
-        node = node->next;
-    }
-    printf("\n");
-    node = stack_b->top;
-    n = 10;
-    printf("+++stack b+++\n");
-    while (n--)
-    {
-        // printf("node:%p\n", node);
-        printf("node->value:%d\n", node->value);
-        // printf("node->prev:%p\n", node->prev);
-        // printf("node->next:%p\n", node->next);
-        // printf("==============================\n");
-        node = node->next;
-    }
+    int n = cnt_dllist(stack_a);
+    // printf("+++stack a+++\n");
+    // while (n--)
+    // {
+    //     // printf("node:%p\n", node);
+    //     printf("node->value:%d\n", node->value);
+    //     // printf("node->prev:%p\n", node->prev);
+    //     // printf("node->next:%p\n", node->next);
+    //     // printf("==============================\n");
+    //     node = node->next;
+    // }
+    // printf("\n");
+    // node = stack_b->top;
+    
+    // n = cnt_dllist(stack_b);
+    // printf("+++stack b+++\n");
+    // while (n--)
+    // {
+    //     // printf("node:%p\n", node);
+    //     printf("node->value:%d\n", node->value);
+    //     // printf("node->prev:%p\n", node->prev);
+    //     // printf("node->next:%p\n", node->next);
+    //     // printf("==============================\n");
+    //     node = node->next;
+    // }
     return (0);
 }
