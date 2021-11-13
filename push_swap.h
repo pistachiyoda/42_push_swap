@@ -47,4 +47,5 @@ int     cnt_dllist(t_stack *stack);
 
 // main sort
 void    quicksort(t_stack *a, t_stack *b);
+void    print_stack(t_stack *stack); // 後で消す
 #endif

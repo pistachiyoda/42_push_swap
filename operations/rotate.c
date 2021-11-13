@@ -29,14 +29,14 @@ void rotate(t_stack *x)
 void rotate_a(t_stack *a)
 {
     rotate(a);
-    ft_putstr_fd("ra\n", 0);
+    ft_putstr_fd("ra\n", 1);
 }
 
 // shift up all elements of stack b by 1. The first element becomes the last one.
 void rotate_b(t_stack *b)
 {
     rotate(b);
-    ft_putstr_fd("rb\n", 0);
+    ft_putstr_fd("rb\n", 1);
 }
 
 // ra and rb at the same time.
@@ -44,5 +44,5 @@ void rotate_r(t_stack *a, t_stack *b)
 {
     rotate(a);
     rotate(b);
-    ft_putstr_fd("rr\n", 0);
+    ft_putstr_fd("rr\n", 1);
 }

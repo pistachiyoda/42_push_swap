@@ -40,18 +40,18 @@ void    swap_top(t_stack *stack)
 void    swap_a(t_stack *a)
 {
     swap_top(a);
-    ft_putstr_fd("sa\n", 0);
+    ft_putstr_fd("sa\n", 1);
 }
 
 void    swap_b(t_stack *b)
 {
     swap_top(b);
-    ft_putstr_fd("sb\n", 0);
+    ft_putstr_fd("sb\n", 1);
 }
 
 void    swap_s(t_stack *a, t_stack *b)
 {
     swap_top(a);
     swap_top(b);
-    ft_putstr_fd("ss\n", 0);
+    ft_putstr_fd("ss\n", 1);
 }

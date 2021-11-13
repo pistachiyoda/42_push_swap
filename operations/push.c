@@ -62,7 +62,7 @@ void    push_a(t_stack *a, t_stack *b)
     if (b == NULL)
         return ;
     push(a, b);
-    ft_putstr_fd("pa\n", 0);
+    ft_putstr_fd("pa\n", 1);
 }
 
 // take the first element at the top of a and put it at the top of b. Do nothing if a is empty
@@ -71,5 +71,5 @@ void    push_b(t_stack *a, t_stack *b)
     if (a ==NULL)
         return ;
     push(b, a);
-    ft_putstr_fd("pb\n", 0);
+    ft_putstr_fd("pb\n", 1);
 }
