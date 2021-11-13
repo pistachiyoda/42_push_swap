@@ -5,6 +5,13 @@ void    sort_less_than_six_values_a(t_stack *stack)
 
 }
 
+void    sort_two_values(t_stack *stack, void (*swap)(t_stack *))
+{
+    if (stack->top->value < stack->bottom->value)
+        return;
+    swap(stack);
+}
+
 void    sort_three_values(
     t_stack *stack, void (* swap)(t_stack *),
     void (* rotate)(t_stack *), void (* rev_rotate)(t_stack *)
@@ -37,13 +44,19 @@ void    sort_three_values(
 void    print_stack(t_stack *stack)
 {
     t_node *node;
+    int len;
 
+    len = cnt_dllist(stack);
     node = stack->top;
-    node = node->next;
-    while (node != stack->top)
+    if (!node)
+        return;
+    printf("======start print stack======\n");
+    while (len--)
     {
+        printf("%d\n", node->value);
         node = node->next;
     }
+    printf("======end print stack======\n");
 }
 
 // スタックからピボットとする値を選択する
@@ -78,7 +91,7 @@ void    split_a_stack(t_stack *a, t_stack *b, int len)
 
 // スタックbの値をa(大)とb(小)に分割
 // 分割後のbの長さを返す
-int    split_b_stack(t_stack *a, t_stack *b)
+void    split_b_stack(t_stack *a, t_stack *b)
 {
     int pivot;
     t_node  *node;
@@ -95,7 +108,6 @@ int    split_b_stack(t_stack *a, t_stack *b)
             rotate_b(b);
         len--;
     }
-    return (cnt_dllist(b));
 }
 
 // スタックの内容がソート済みになっているか
@@ -119,28 +131,21 @@ bool    is_splittable(t_stack *stack)
     int cnt;
 
     cnt = cnt_dllist(stack);
-    if (cnt <= 2)
+    if (cnt <= 3)
         return (false);
     return (true);
 }
 
 // aの末尾にbの値を小さい順に追加する
+// bはソート済み
 // 追加した値の個数を返す
-int    add_min_values(t_stack *a, t_stack *b)
+void    add_min_values(t_stack *a, t_stack *b, int b_len)
 {
-    if (b->top == b->bottom)
+    while (b_len--)
     {
         push_a(a, b);
         rotate_a(a);
-        return (1);
     }
-    if (b->top->value < b->bottom->value)
-        rotate_b(b);
-    push_a(a, b);
-    push_a(a, b);
-    rotate_a(a);
-    rotate_a(a);
-    return (2);
 }
 
 // ソート済み以外の値をbにpushする
@@ -171,15 +176,16 @@ void    quicksort(t_stack *a, t_stack *b)
     {
         while (is_splittable(b))
         {
-            b_len = split_b_stack(a, b);
-            if (b_len == 3)
-            {
-                sort_three_values(b, swap_b, rotate_b, rev_rotate_b);
-                break;
-            }
+            split_b_stack(a, b);
             rotate_b(b);
         }
-        sorted_len += add_min_values(a, b);
+        b_len = cnt_dllist(b);
+        if (b_len == 2)
+            sort_two_values(b, swap_b);
+        else if (b_len == 3)
+            sort_three_values(b, swap_b, rotate_b, rev_rotate_b);
+        add_min_values(a, b, b_len);
+        sorted_len += b_len;
         push_without_sorted(a, b, len, sorted_len);
     }
 
