@@ -1,8 +1,52 @@
 #include "../push_swap.h"
 
-void    sort_less_than_six_values_a(t_stack *stack)
+// スタックの内容がソート済みになっているか
+bool    is_sorted(t_stack *stack)
 {
+    t_node *node;
 
+    node = stack->top;
+    while(node->next != stack->top)
+    {
+        if (node->value > node->next->value)
+            return (false);
+        node = node->next;
+    }
+    return (true);
+}
+
+int     get_min_index(t_stack *stack)
+{
+    int i;
+    int min_value;
+    int min_index;
+    t_node *node;
+
+    i = 1;
+    min_index = 0;
+    min_value = stack->top->value;
+    node = stack->top->next;
+    while (node != stack->top)
+    {
+        if (node->value < min_value)
+        {
+            min_value = node->value;
+            min_index = i;
+        }
+        i++;
+        node = node->next;
+    }
+    return (min_index);
+}
+
+// 
+void    rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *))
+{
+    while (num)
+    {
+        rotate(stack);
+        num--;
+    }
 }
 
 void    sort_two_values(t_stack *stack, void (*swap)(t_stack *))
@@ -38,7 +82,57 @@ void    sort_three_values(
         swap(stack);
         return rotate(stack);
     }
-    return rev_rotate_a(stack);
+    return rev_rotate(stack);
+}
+
+void    sort_less_than_six_values_a(t_stack *a, t_stack *b, int len)
+{
+    int i;
+    int min_index;
+    t_node *node;
+
+    i = 0;
+    while (i < len - 3)
+    {
+        min_index = get_min_index(a);
+        rotate_multi(a, min_index, rotate_a);
+        push_b(a, b);
+        i++;
+    }
+    if (!is_sorted(a))
+        sort_three_values(a, swap_a, rotate_a, rev_rotate_a);
+    i = 0;
+    while (i < len - 3)
+    {
+        push_a(a, b);
+        i++;
+    }
+}
+
+void    sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len)
+{
+    int i;
+    int min_index;
+    t_node *node;
+
+    i = 0;
+    while (i < len - 3)
+    {
+        min_index = get_min_index(b);
+        rotate_multi(b, min_index, rotate_b);
+        push_a(a, b);
+        rotate_a(a);
+        i++;
+    }
+    if (!is_sorted(b))
+    sort_three_values(b, swap_b, rotate_b, rev_rotate_b);
+    i = 0;
+    while (i < 3)
+    {
+        push_a(a, b);
+        rotate_a(a);
+        i++;
+    }
 }
 
 void    print_stack(t_stack *stack)
@@ -53,10 +147,10 @@ void    print_stack(t_stack *stack)
     printf("======start print stack======\n");
     while (len--)
     {
-        printf("%d\n", node->value);
+        printf("%d ", node->value);
         node = node->next;
     }
-    printf("======end print stack======\n");
+    printf("\n======end print stack======\n");
 }
 
 // スタックからピボットとする値を選択する
@@ -110,28 +204,13 @@ void    split_b_stack(t_stack *a, t_stack *b)
     }
 }
 
-// スタックの内容がソート済みになっているか
-bool    is_sorted(t_stack *stack)
-{
-    t_node *node;
-
-    node = stack->top;
-    while(node->next != stack->top)
-    {
-        if (node->value > node->next->value)
-            return (false);
-        node = node->next;
-    }
-    return (true);
-}
-
 // スタックの内容が分割可能か
 bool    is_splittable(t_stack *stack)
 {
     int cnt;
 
     cnt = cnt_dllist(stack);
-    if (cnt <= 3)
+    if (cnt <= 6)
         return (false);
     return (true);
 }
@@ -169,6 +248,8 @@ void    quicksort(t_stack *a, t_stack *b)
     len = cnt_dllist(a);
     if (len == 3)
         return sort_three_values(a, swap_a, rotate_a, rev_rotate_a);
+    if (len <= 6)
+        return sort_less_than_six_values_a(a, b, len);
     sorted_len = 0;
     split_a_stack(a, b, len);
     b_len = cnt_dllist(b);
@@ -184,7 +265,10 @@ void    quicksort(t_stack *a, t_stack *b)
             sort_two_values(b, swap_b);
         else if (b_len == 3)
             sort_three_values(b, swap_b, rotate_b, rev_rotate_b);
-        add_min_values(a, b, b_len);
+        if (b_len > 3 && b_len <= 6)
+            sort_and_push_less_than_six_values_b(a, b, b_len);
+        else
+            add_min_values(a, b, b_len);
         sorted_len += b_len;
         push_without_sorted(a, b, len, sorted_len);
     }

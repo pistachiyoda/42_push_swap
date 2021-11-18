@@ -11,9 +11,10 @@ int main(int argc, char **argv)
     create_nodes(argc - 1, argv, stack_a);
 
     quicksort(stack_a, stack_b);
+    // print_stack(stack_a);
 
-    node = stack_a->top;
-    int n = cnt_dllist(stack_a);
+    // node = stack_a->top;
+    // int n = cnt_dllist(stack_a);
     // printf("+++stack a+++\n");
     // while (n--)
     // {
@@ -38,5 +39,10 @@ int main(int argc, char **argv)
     //     // printf("==============================\n");
     //     node = node->next;
     // }
+
+    // printf("========stack a========\n");
+    // print_stack(stack_a);
+    // printf("========stack b========\n");
+    // print_stack(stack_b);
     return (0);
 }
