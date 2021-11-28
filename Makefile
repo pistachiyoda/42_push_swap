@@ -2,7 +2,8 @@ NAME = push_swap
 CC = gcc
 CFILES = main.c init_stack.c\
 		./operations/swap.c ./operations/push.c ./operations/rotate.c ./operations/reverse_rotate.c ./operations/cnt_dllist.c\
-		./sort/quicksort.c ./operations/connect_nodes.c
+		./sort/quicksort.c ./sort/sort_small_values.c ./sort/sort_utils.c\
+		./operations/connect_nodes.c
 # CFLAGS = -Wall -Wextra -Werror
 OBJ = $(CFILES:.c=.o)
 LIBFT_PATH = ./42_libft_new/
