@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:15:36 by mai               #+#    #+#             */
-/*   Updated: 2021/11/28 14:15:37 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/15 22:22:23 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	sort_three_values(
 	first = stack->top;
 	second = stack->top->next;
 	third = stack->bottom;
+	if (first->value < second->value && second->value < third->value)
+		return;
 	if (first->value > second->value
 		&& second->value < third->value
 		&& third->value > first->value)

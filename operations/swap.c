@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:59:59 by mai               #+#    #+#             */
-/*   Updated: 2021/11/19 22:33:35 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/15 11:33:34 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void	swap_top(t_stack *stack)
 	stack->top = second_to_top;
 }
 
+// swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
 void	swap_a(t_stack *a)
 {
 	swap_top(a);
 	ft_putstr_fd("sa\n", 1);
 }
 
+// swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements).
 void	swap_b(t_stack *b)
 {
 	swap_top(b);
