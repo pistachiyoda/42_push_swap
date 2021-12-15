@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/15 15:17:00 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/15 22:58:00 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,16 +139,16 @@ void	split_b_stack(t_stack *a, t_stack *b)
 	int		len;
 
 	pivot = choice_pivot(b);
-	// len = cnt_dllist(b) - 1;
+	len = cnt_dllist(b);
 	// rotate_b(b);
-	// while (len)
-	// {
-	if (pivot <= b->top->value)
-		push_a(a, b);
-	else
-		rotate_b(b);
-		// len--;
-	// }
+	while (len)
+	{
+		if (pivot <= b->top->value)
+			push_a(a, b);
+		else
+			rotate_b(b);
+		len--;
+	}
 }
 
 // スタックの内容が分割可能か
