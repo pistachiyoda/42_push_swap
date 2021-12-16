@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:00:11 by mai               #+#    #+#             */
-/*   Updated: 2021/12/16 18:34:06 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/16 23:10:14 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,35 @@ bool is_not_intnum(int argc, char **argv)
 	return (false);
 }
 
+bool has_duplicate(int argc, char **argv)
+{
+	int	i;
+	int j;
+	
+	i = 1;
+	while (i < argc)
+	{
+		j = 1;
+		while (j < argc)
+		{
+			if (i == j)
+			{
+				j ++;
+				continue ;
+			}
+			if (
+				!ft_strncmp(argv[i], argv[j], ft_strlen(argv[i])) &&
+				ft_strlen(argv[i]) == ft_strlen(argv[j])
+			) {
+				return (true);
+			}
+			j ++;
+		}
+		i ++;
+	}
+	return false;
+}
+
 int	main(int argc, char **argv)
 {
 	t_node	*node;
@@ -58,6 +87,11 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	if (is_not_intnum(argc, argv))
+	{
+		ft_putstr_fd("Error\n", 0);
+		return (0);
+	}
+	if (has_duplicate(argc, argv))
 	{
 		ft_putstr_fd("Error\n", 0);
 		return (0);
