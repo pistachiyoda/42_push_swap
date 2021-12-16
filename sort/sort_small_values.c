@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:15:36 by mai               #+#    #+#             */
-/*   Updated: 2021/12/15 22:22:23 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/16 11:42:55 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ void	sort_three_values(
 		return (rotate(stack));
 	}
 	return (rev_rotate(stack));
+}
+
+void	rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *))
+{
+	while (num)
+	{
+		rotate(stack);
+		num--;
+	}
 }
 
 void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len)

@@ -6,13 +6,13 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/15 22:58:00 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/16 11:40:44 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// スタックの内容がソート済みになっているか
+// スタックの内容がソート済みになっていたらtrue, なっていなかったらfalseを返す
 bool	is_sorted(t_stack *stack)
 {
 	t_node	*node;
@@ -27,7 +27,7 @@ bool	is_sorted(t_stack *stack)
 	return (true);
 }
 
-// 最小値の検索
+// スタックの値から最小値の検索し、返す
 int	get_min_index(t_stack *stack)
 {
 	int		i;
@@ -52,17 +52,7 @@ int	get_min_index(t_stack *stack)
 	return (min_index);
 }
 
-// 
-void	rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *))
-{
-	while (num)
-	{
-		rotate(stack);
-		num--;
-	}
-}
-
-//
+// スタックの値を表示、確認用、後で消す！！！！！！！
 void	print_stack(t_stack *stack)
 {
 	t_node	*node;
@@ -81,21 +71,22 @@ void	print_stack(t_stack *stack)
 	printf("\n======end print stack======\n");
 }
 
-int med3(int a, int b, int c)
+// ３つの値のうち、真ん中の値を返す
+int get_med_of_3vals(int a, int b, int c)
 {
     if (a < b)
-        if (b < c)       // a < b < c
+        if (b < c)
             return b;
-        else if (a < c)  // a < c <= b
+        else if (a < c)
             return c;
-        else             // c <= a < b
+        else
             return a;
     else
-        if (a < c)       // b <= a < c
+        if (a < c)
             return a;
-        else if (b < c)  // b < c <= a
+        else if (b < c)
             return c;
-        else             // c <= b < a
+        else
             return b;
 }
 
@@ -105,12 +96,11 @@ int	choice_pivot(t_stack *stack)
 {
 	int	pivot;
 	
-	pivot = med3(stack->top->value, stack->top->next->value, stack->bottom->value);
-	return (pivot);
+	return (get_med_of_3vals(stack->top->value, stack->top->next->value, stack->bottom->value));
 }
 
 // スタックaの値をa(大)とb(小)に分割
-// ピボットは小に分類する
+// ピボットはb(小)に分類する
 // 初回のみ
 void	split_a_stack(t_stack *a, t_stack *b, int len)
 {
@@ -118,10 +108,8 @@ void	split_a_stack(t_stack *a, t_stack *b, int len)
 	t_node	*node;
 
 	pivot = choice_pivot(a);
-	// len--;
 	while (len)
 	{
-		// printf("a->top->value:%d\n", a->top->value);
 		if (pivot >= a->top->value)
 			push_b(a, b);
 		else
@@ -131,7 +119,7 @@ void	split_a_stack(t_stack *a, t_stack *b, int len)
 }
 
 // スタックbの値をa(大)とb(小)に分割
-// 分割後のbの長さを返す
+// ピボットはb(小)に分類する
 void	split_b_stack(t_stack *a, t_stack *b)
 {
 	int		pivot;
@@ -140,7 +128,6 @@ void	split_b_stack(t_stack *a, t_stack *b)
 
 	pivot = choice_pivot(b);
 	len = cnt_dllist(b);
-	// rotate_b(b);
 	while (len)
 	{
 		if (pivot <= b->top->value)
@@ -151,7 +138,7 @@ void	split_b_stack(t_stack *a, t_stack *b)
 	}
 }
 
-// スタックの内容が分割可能か
+// スタックの内容が分割可能（７以上）ならtrue, なっていなかったらfalseを返す
 bool	is_splittable(t_stack *stack)
 {
 	int	cnt;
@@ -162,9 +149,7 @@ bool	is_splittable(t_stack *stack)
 	return (true);
 }
 
-// aの末尾にbの値を小さい順に追加する
-// bはソート済み
-// 追加した値の個数を返す
+// スタックbの値をaの末尾に追加する
 void	add_min_values(t_stack *a, t_stack *b, int b_len)
 {
 	while (b_len--)
@@ -174,7 +159,7 @@ void	add_min_values(t_stack *a, t_stack *b, int b_len)
 	}
 }
 
-// ソート済み以外の値をbにpushする
+// ソートされていないスタックaにある値をsスタックbに移動する
 void	push_without_sorted(t_stack *a, t_stack *b, int len, int sorted_len)
 {
 	while (len > sorted_len)
@@ -182,9 +167,4 @@ void	push_without_sorted(t_stack *a, t_stack *b, int len, int sorted_len)
 		push_b(a, b);
 		len--;
 	}
-
-	// printf("++a(push_without_sorted)++\n");
-	// print_stack(a);
-	// printf("++b(push_without_sorted)++\n");
-	// print_stack(b);
 }

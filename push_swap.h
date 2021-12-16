@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:14:09 by mai               #+#    #+#             */
-/*   Updated: 2021/11/28 14:27:59 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/16 11:41:09 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	sort_three_values(
 	t_stack *stack, void (*swap)(t_stack *),
 	void (*rotate)(t_stack *), void (*rev_rotate)(t_stack *)
 );
+void	rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *));
 void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len);
 void	sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len);
 
@@ -73,7 +74,6 @@ void	sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len);
 void	print_stack(t_stack *stack); // 後で消す
 bool	is_sorted(t_stack *stack);
 int	get_min_index(t_stack *stack);
-void	rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *));
 void	print_stack(t_stack *stack);
 int	choice_pivot(t_stack *stack);
 void	split_a_stack(t_stack *a, t_stack *b, int len);
