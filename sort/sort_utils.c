@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/17 13:54:59 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/17 15:07:31 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,22 @@ int get_med_of_3vals(int a, int b, int c)
 }
 
 // 5つの値のうち、真ん中の値を返す
-int get_med_of_7vals(int *nums)
+int get_mid(int cnt, int *nums)
 {
 	int i;
 	int j;
 	int k;
 	int min;
 	int tmp;
+	int mid;
 
 	i = 0;
-	while (i < 7)
+	while (i < cnt)
 	{
 		min = nums[i]; 
 		k = i;
 		j = i + 1;
-		while (j < 7)
+		while (j < cnt)
 		{
 			if (nums[j] < min)
 			{
@@ -119,24 +120,33 @@ int get_med_of_7vals(int *nums)
 		}
 		i++;
 	}
-    return (nums[3]);
+	if ((cnt % 2) == 0)
+		mid = cnt / 2;
+	else
+		mid = (cnt + 1) / 2;
+    return (nums[mid]);
 }
 
 // スタックからピボットとする値を選択する
-// 5つの値を選んで、それらのうちの真ん中の値をpivotにする
+// ピボットは中央値とする
 int	choice_pivot(t_stack *stack)
 {
-	int nums[7];
-	
-	nums[0] = stack->top->value;
-	nums[1] = stack->top->next->value;
-	nums[2] = stack->top->next->next->value;
-	nums[3] = stack->top->next->next->next->value;
-	nums[4] = stack->bottom->value;
-	nums[5] = stack->bottom->prev->value;
-	nums[6] = stack->bottom->prev->prev->value;
+	int cnt;
+	int i;
+	int *nums;
+	t_node *node;
 
-	return (get_med_of_7vals(nums));
+	cnt = cnt_dllist(stack);
+	i = 0;
+	nums = (int *)malloc(cnt);
+	node = stack->top;
+	while (i < cnt)
+	{
+		nums[i] = node->value;
+		node = node->next;
+		i++;
+	}
+	return (get_mid(cnt, nums));
 }
 
 // スタックaの値をa(大)とb(小)に分割
