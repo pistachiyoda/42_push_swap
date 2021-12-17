@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/16 11:40:44 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/17 13:54:59 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	print_stack(t_stack *stack)
 	printf("\n======end print stack======\n");
 }
 
-// ３つの値のうち、真ん中の値を返す
+// 3つの値のうち、真ん中の値を返す
 int get_med_of_3vals(int a, int b, int c)
 {
     if (a < b)
@@ -90,13 +90,53 @@ int get_med_of_3vals(int a, int b, int c)
             return b;
 }
 
+// 5つの値のうち、真ん中の値を返す
+int get_med_of_7vals(int *nums)
+{
+	int i;
+	int j;
+	int k;
+	int min;
+	int tmp;
+
+	i = 0;
+	while (i < 7)
+	{
+		min = nums[i]; 
+		k = i;
+		j = i + 1;
+		while (j < 7)
+		{
+			if (nums[j] < min)
+			{
+				min = nums[j];
+				k = j;
+				tmp = nums[i];
+				nums[i] = nums[k];
+				nums[k] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+    return (nums[3]);
+}
+
 // スタックからピボットとする値を選択する
-// 3つの値を選んで、それらのうちの真ん中の値をpivotにする
+// 5つの値を選んで、それらのうちの真ん中の値をpivotにする
 int	choice_pivot(t_stack *stack)
 {
-	int	pivot;
+	int nums[7];
 	
-	return (get_med_of_3vals(stack->top->value, stack->top->next->value, stack->bottom->value));
+	nums[0] = stack->top->value;
+	nums[1] = stack->top->next->value;
+	nums[2] = stack->top->next->next->value;
+	nums[3] = stack->top->next->next->next->value;
+	nums[4] = stack->bottom->value;
+	nums[5] = stack->bottom->prev->value;
+	nums[6] = stack->bottom->prev->prev->value;
+
+	return (get_med_of_7vals(nums));
 }
 
 // スタックaの値をa(大)とb(小)に分割
