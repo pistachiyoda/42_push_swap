@@ -26,6 +26,19 @@ function cnt() {
 	fi
 }
 
+echo "====Error management===="
+echo "1/4 Non numeric"
+./push_swap 123 456 ghj
+echo "2/4 Duplicate num"
+./push_swap 123 456 123
+echo "3/4 Greater than max int, Smaller than min int"
+./push_swap 9223372036854775807
+./push_swap -9223372036854775808
+./push_swap 2147483648
+./push_swap -2147483649
+echo "4/4 No param"
+./push_swap
+
 echo "====simple version===="
 ARG="2 1 0"
 check ${ARG}
@@ -54,15 +67,23 @@ while [ ${i} -gt 0 ]; do
 	i=$((${i} - 1))
 done
 
-echo "====Original version===="
-i=20
-while [ ${i} -gt 0 ]; do
-	echo "---------"
-	ARG=`jot -r 8 ${INT_MIN} ${INT_MAX}`
-	check ${ARG}
-	# cnt 900
-	i=$((${i} - 1))
-done
+# while [ ${i} -gt 0 ]; do
+# 	echo "---------"
+# 	ARG=`jot -r 15 1 1000`
+# 	check ${ARG}
+# 	cnt 900
+# 	i=$((${i} - 1))
+# done
+
+# echo "====Adovanced version===="
+# i=5
+# while [ ${i} -gt 0 ]; do
+# 	echo "---------"
+# 	ARG=`jot -r 500 ${INT_MIN} ${INT_MAX}`
+# 	check ${ARG}
+# 	cnt 7000
+# 	i=$((${i} - 1))
+# done
 
 rm tmp
 rm tmp2

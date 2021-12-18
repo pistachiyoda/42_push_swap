@@ -6,14 +6,14 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/17 15:07:31 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/18 23:23:34 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 // スタックの内容がソート済みになっていたらtrue, なっていなかったらfalseを返す
-bool	is_sorted(t_stack *stack)
+bool	is_sorted(t_stack *stack)  // スタックが空の時セグフォしてる
 {
 	t_node	*node;
 
@@ -91,7 +91,7 @@ int get_med_of_3vals(int a, int b, int c)
 }
 
 // 5つの値のうち、真ん中の値を返す
-int get_mid(int cnt, int *nums)
+int *selection_sort(int cnt, int *nums)
 {
 	int i;
 	int j;
@@ -120,16 +120,10 @@ int get_mid(int cnt, int *nums)
 		}
 		i++;
 	}
-	if ((cnt % 2) == 0)
-		mid = cnt / 2;
-	else
-		mid = (cnt + 1) / 2;
-    return (nums[mid]);
+    return (nums);
 }
 
-// スタックからピボットとする値を選択する
-// ピボットは中央値とする
-int	choice_pivot(t_stack *stack)
+int *sort_nums(t_stack *stack)
 {
 	int cnt;
 	int i;
@@ -146,7 +140,20 @@ int	choice_pivot(t_stack *stack)
 		node = node->next;
 		i++;
 	}
-	return (get_mid(cnt, nums));
+	return (selection_sort(cnt, nums));
+}
+
+// スタックからピボットとする値を選択する
+// ピボットは中央値とする
+int	choice_pivot(int *nums, int cnt)
+{
+	int mid;
+
+	if ((cnt % 2) == 0)
+		mid = cnt / 2;
+	else
+		mid = (cnt + 1) / 2;
+	return (nums[mid]);
 }
 
 // スタックaの値をa(大)とb(小)に分割
@@ -156,8 +163,10 @@ void	split_a_stack(t_stack *a, t_stack *b, int len)
 {
 	int		pivot;
 	t_node	*node;
+	int		*nums;
 
-	pivot = choice_pivot(a);
+	nums = sort_nums(a);
+	pivot = choice_pivot(nums, len);
 	while (len)
 	{
 		if (pivot >= a->top->value)
@@ -170,17 +179,32 @@ void	split_a_stack(t_stack *a, t_stack *b, int len)
 
 // スタックbの値をa(大)とb(小)に分割
 // ピボットはb(小)に分類する
-void	split_b_stack(t_stack *a, t_stack *b)
+void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len)
 {
 	int		pivot;
 	t_node	*node;
 	int		len;
+	int		*nums;
+	int		min_val;
 
-	pivot = choice_pivot(b);
 	len = cnt_dllist(b);
+	// スタック中の値をソート済みの配列にして返す
+	nums = sort_nums(b);
+	// ピボットの選択→[cnt_dlist(b) / 2]
+	pivot = choice_pivot(nums, len);
+	// 最小→[0]
+	min_val = nums[0];
 	while (len)
 	{
-		if (pivot <= b->top->value)
+		if (b->top->value == min_val)
+		{
+			push_a(a, b);
+			rotate_a(a);
+			*sorted_len += 1;
+			nums = sort_nums(b);
+			min_val = nums[0];
+		}
+		else if (pivot <= b->top->value)
 			push_a(a, b);
 		else
 			rotate_b(b);
@@ -194,9 +218,9 @@ bool	is_splittable(t_stack *stack)
 	int	cnt;
 
 	cnt = cnt_dllist(stack);
-	if (cnt <= 6)
-		return (false);
-	return (true);
+	if (cnt >= 7)
+		return (true);
+	return (false);
 }
 
 // スタックbの値をaの末尾に追加する

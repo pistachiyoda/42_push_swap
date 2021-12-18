@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:14:09 by mai               #+#    #+#             */
-/*   Updated: 2021/12/16 11:41:09 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/18 23:08:04 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	print_stack(t_stack *stack); // 後で消す
 bool	is_sorted(t_stack *stack);
 int	get_min_index(t_stack *stack);
 void	print_stack(t_stack *stack);
-int	choice_pivot(t_stack *stack);
+int	choice_pivot(int *nums, int cnt);
 void	split_a_stack(t_stack *a, t_stack *b, int len);
-void	split_b_stack(t_stack *a, t_stack *b);
+void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len);
 bool	is_splittable(t_stack *stack);
 void	add_min_values(t_stack *a, t_stack *b, int b_len);
 void	push_without_sorted(t_stack *a, t_stack *b, int len, int sorted_len);

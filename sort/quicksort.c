@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:58:57 by mai               #+#    #+#             */
-/*   Updated: 2021/12/16 11:20:47 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/18 22:58:06 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ void	quicksort(t_stack *a, t_stack *b)
 		return (sort_less_than_six_values_a(a, b, a_len));
 	sorted_len = 0;
 	split_a_stack(a, b, a_len);
-	b_len = cnt_dllist(b);
 	while (a_len != sorted_len)
 	{
 		while (is_splittable(b))
-			split_b_stack(a, b);
+			split_b_stack(a, b, &sorted_len);
 		b_len = cnt_dllist(b);
 		c_a_len = cnt_dllist(a);
 		sorted_len += b_len;
@@ -45,6 +44,7 @@ void	quicksort(t_stack *a, t_stack *b)
 		if (b_len > 3 && b_len <= 6)
 		{
 			sort_and_push_less_than_six_values_b(a, b, b_len);
+			push_without_sorted(a, b, a_len, sorted_len);
 			continue;
 		}
 		add_min_values(a, b, b_len);
