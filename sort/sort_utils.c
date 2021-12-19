@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/18 23:23:34 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/19 18:05:58 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,19 +226,75 @@ bool	is_splittable(t_stack *stack)
 // スタックbの値をaの末尾に追加する
 void	add_min_values(t_stack *a, t_stack *b, int b_len)
 {
-	while (b_len--)
+	while (b_len --)
 	{
 		push_a(a, b);
 		rotate_a(a);
 	}
 }
 
-// ソートされていないスタックaにある値をsスタックbに移動する
-void	push_without_sorted(t_stack *a, t_stack *b, int len, int sorted_len)
+int get_min_value_in_range(t_stack *stack, int len)
 {
-	while (len > sorted_len)
+	t_node *node;
+	int min;
+
+	node = stack->top;
+	min = node->value;
+	while (len)
 	{
-		push_b(a, b);
-		len--;
+		if (min > node->value)
+			min = node->value;
+		node = node->next;
+		len --;
+	}
+	return (min);
+}
+
+int get_min_value(t_stack *stack)
+{
+	t_node *node;
+	int min;
+
+	node = stack->top->next;
+	min = stack->top->value;
+	while (node != stack->top)
+	{
+		if (min > node->value)
+			min = node->value;
+		node = node->next;
+	}
+	return (min);
+}
+
+// ソートされていないスタックaにある値をスタックbに移動する
+// 最小値がきたときはスタックaの末尾に移動
+void	push_without_sorted(t_stack *a, t_stack *b, int len, int *sorted_len)
+{
+	int min;
+	int a_min;
+	int b_min;
+
+	min = get_min_value_in_range(a, len - *sorted_len);
+	while (len > *sorted_len)
+	{
+		if (a->top->value == min)
+		{
+			rotate_a(a);
+			*sorted_len += 1;
+			if (!b->top)
+				min = get_min_value_in_range(a, len - *sorted_len);
+			else
+			{
+				a_min = get_min_value_in_range(a, len - *sorted_len);
+				b_min = get_min_value(b);
+				if (a_min < b_min)
+					min = a_min;
+			}
+		}
+		else
+		{
+			push_b(a, b);
+			len--;
+		}
 	}
 }

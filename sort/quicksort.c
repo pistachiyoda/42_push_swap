@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:58:57 by mai               #+#    #+#             */
-/*   Updated: 2021/12/18 22:58:06 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/19 14:42:20 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	quicksort(t_stack *a, t_stack *b)
 		if (b_len > 3 && b_len <= 6)
 		{
 			sort_and_push_less_than_six_values_b(a, b, b_len);
-			push_without_sorted(a, b, a_len, sorted_len);
+			push_without_sorted(a, b, a_len, &sorted_len);
 			continue;
 		}
 		add_min_values(a, b, b_len);
-		push_without_sorted(a, b, a_len, sorted_len);
+		push_without_sorted(a, b, a_len, &sorted_len);
 	}
 }

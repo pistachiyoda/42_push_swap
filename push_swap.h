@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:14:09 by mai               #+#    #+#             */
-/*   Updated: 2021/12/18 23:08:04 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/19 14:37:41 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ void	split_a_stack(t_stack *a, t_stack *b, int len);
 void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len);
 bool	is_splittable(t_stack *stack);
 void	add_min_values(t_stack *a, t_stack *b, int b_len);
-void	push_without_sorted(t_stack *a, t_stack *b, int len, int sorted_len);
+void	push_without_sorted(t_stack *a, t_stack *b, int len, int *sorted_len);
 #endif
