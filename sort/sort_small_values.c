@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:15:36 by mai               #+#    #+#             */
-/*   Updated: 2021/12/19 14:05:25 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/20 22:57:31 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len)
 	while (i < len - 3)
 	{
 		min_index = get_min_index(a);
-		rotate_multi(a, min_index, rotate_a);
+		if (min_index > (len - i) / 2)
+			rotate_multi(a, (len - i) - min_index, rev_rotate_a);
+		else
+			rotate_multi(a, min_index, rotate_a);
 		push_b(a, b);
 		i++;
 	}
