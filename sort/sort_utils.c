@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/19 18:05:58 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/23 22:21:12 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,18 @@ void	print_stack(t_stack *stack)
 
 	len = cnt_dllist(stack);
 	node = stack->top;
-	if (!node)
-		return ;
 	printf("======start print stack======\n");
-	while (len--)
+	if (!node)
 	{
-		printf("%d ", node->value);
-		node = node->next;
+		printf("empty stack");
+	}
+	else
+	{
+		while (len--)
+		{
+			printf("%d ", node->value);
+			node = node->next;
+		}
 	}
 	printf("\n======end print stack======\n");
 }
@@ -150,19 +155,18 @@ int	choice_pivot(int *nums, int cnt)
 	int mid;
 
 	if ((cnt % 2) == 0)
-		mid = cnt / 2;
+		mid = cnt / 2 - 1;
 	else
-		mid = (cnt + 1) / 2;
+		mid = (cnt + 1) / 2 - 1;
 	return (nums[mid]);
 }
 
 // スタックaの値をa(大)とb(小)に分割
 // ピボットはb(小)に分類する
 // 初回のみ
-void	split_a_stack(t_stack *a, t_stack *b, int len)
+void	split_a_stack(t_stack *a, t_stack *b, int len, t_stack *unsorted_nums_list)
 {
 	int		pivot;
-	t_node	*node;
 	int		*nums;
 
 	nums = sort_nums(a);
@@ -175,11 +179,12 @@ void	split_a_stack(t_stack *a, t_stack *b, int len)
 			rotate_a(a);
 		len--;
 	}
+	push_chunk(unsorted_nums_list, cnt_dllist(a));
 }
 
 // スタックbの値をa(大)とb(小)に分割
 // ピボットはb(小)に分類する
-void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len)
+void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
 	int		pivot;
 	t_node	*node;
@@ -194,22 +199,25 @@ void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len)
 	pivot = choice_pivot(nums, len);
 	// 最小→[0]
 	min_val = nums[0];
+	push_chunk(unsorted_list, 0);
 	while (len)
 	{
 		if (b->top->value == min_val)
 		{
 			push_a(a, b);
 			rotate_a(a);
-			*sorted_len += 1;
-			nums = sort_nums(b);
-			min_val = nums[0];
 		}
 		else if (pivot <= b->top->value)
+		{
 			push_a(a, b);
+			unsorted_list->top->value += 1;
+		}
 		else
 			rotate_b(b);
 		len--;
 	}
+	// free(nums);
+	// nums = NULL;
 }
 
 // スタックの内容が分割可能（７以上）ならtrue, なっていなかったらfalseを返す
@@ -266,35 +274,15 @@ int get_min_value(t_stack *stack)
 	return (min);
 }
 
-// ソートされていないスタックaにある値をスタックbに移動する
-// 最小値がきたときはスタックaの末尾に移動
-void	push_without_sorted(t_stack *a, t_stack *b, int len, int *sorted_len)
+// ソートされていないチャンクの一番上をstack_bに移動
+void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
-	int min;
-	int a_min;
-	int b_min;
+	int	chunk_len;
 
-	min = get_min_value_in_range(a, len - *sorted_len);
-	while (len > *sorted_len)
+	chunk_len = pop_chunk(unsorted_list);
+	while (chunk_len)
 	{
-		if (a->top->value == min)
-		{
-			rotate_a(a);
-			*sorted_len += 1;
-			if (!b->top)
-				min = get_min_value_in_range(a, len - *sorted_len);
-			else
-			{
-				a_min = get_min_value_in_range(a, len - *sorted_len);
-				b_min = get_min_value(b);
-				if (a_min < b_min)
-					min = a_min;
-			}
-		}
-		else
-		{
-			push_b(a, b);
-			len--;
-		}
+		push_b(a, b);
+		chunk_len --;
 	}
 }

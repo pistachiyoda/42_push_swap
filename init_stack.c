@@ -6,11 +6,56 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:00:05 by mai               #+#    #+#             */
-/*   Updated: 2021/11/28 13:55:12 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/23 22:15:11 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_chunk(t_stack *stack, int value)
+{
+	t_node	*chunk;
+
+	chunk = create_node(value);
+	if (cnt_dllist(stack) == 0)
+	{
+		stack->top = chunk;
+		stack->bottom = chunk;
+		connect_nodes(chunk, chunk);
+	}
+	else
+	{
+		connect_nodes(stack->bottom, chunk);
+		connect_nodes(chunk, stack->top);
+		stack->top = chunk;
+	}
+}
+
+int		pop_chunk(t_stack *stack)
+{
+	t_node	*chunk;
+	int		chunk_val;
+	int		len;
+
+	len = cnt_dllist(stack);
+	chunk = stack->top;
+	if (len == 1)
+	{
+		stack->top = NULL;
+		stack->bottom = NULL;
+	}
+	else
+	{
+		stack->top = stack->top->next;
+		connect_nodes(stack->bottom, stack->top);
+	}
+	chunk_val = chunk->value;
+
+	// printf("---free--\n");
+	// free(chunk);
+	// printf("---return--\n");
+	return (chunk_val);
+}
 
 t_node	*create_node(int value)
 {

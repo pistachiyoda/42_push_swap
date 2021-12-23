@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:00:11 by mai               #+#    #+#             */
-/*   Updated: 2021/12/18 23:18:41 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/23 22:15:41 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,9 @@ int	main(int argc, char **argv)
 	stack_b = (t_stack *)malloc(sizeof(t_stack));
 	create_nodes(argc - 1, argv, stack_a);
 	quicksort(stack_a, stack_b);
+	// printf("-------------stack a-------------+\n");
+	// print_stack(stack_a);
+	// printf("-------------stack b-------------+\n");
+	// print_stack(stack_b);
 	return (0);
 }

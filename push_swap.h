@@ -6,7 +6,7 @@
 /*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:14:09 by mai               #+#    #+#             */
-/*   Updated: 2021/12/19 14:37:41 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/23 01:00:07 by mai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_stack
 void	create_nodes(int num, char **num_list, t_stack *stack);
 t_node	*create_node(int value);
 void	connect_nodes(t_node *node_1, t_node *node_2);
+void	push_chunk(t_stack *stack, int value);
+int		pop_chunk(t_stack *stack);
 
 // operations/swap.c
 void	swap_a(t_stack *a);
@@ -76,9 +78,9 @@ bool	is_sorted(t_stack *stack);
 int	get_min_index(t_stack *stack);
 void	print_stack(t_stack *stack);
 int	choice_pivot(int *nums, int cnt);
-void	split_a_stack(t_stack *a, t_stack *b, int len);
-void	split_b_stack(t_stack *a, t_stack *b, int *sorted_len);
+void	split_a_stack(t_stack *a, t_stack *b, int len, t_stack *unsorted_list);
+void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list);
 bool	is_splittable(t_stack *stack);
 void	add_min_values(t_stack *a, t_stack *b, int b_len);
-void	push_without_sorted(t_stack *a, t_stack *b, int len, int *sorted_len);
+void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list);
 #endif
