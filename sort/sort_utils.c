@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/25 22:30:15 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/25 23:19:36 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,8 +282,11 @@ void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 	int min;
 	t_node *node;
 	int i;
+	int j;
+	int b_min;
 
 	chunk_len = pop_chunk(unsorted_list);
+	// printf("chunk_len = %d\n", chunk_len);
 	if (chunk_len == 2)
 	{
 		sort_two_values(a, swap_a);
@@ -307,9 +310,37 @@ void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 	{
 		// そのchunkの最小値はスタックaの末尾に移動する
 		if (a->top->value == min)
+		{
 			rotate_a(a);
+			// スタックaのいま処理してるchunkとスタックbにpushした値の中のminを求めたい
+			// chunk中で探す
+			node = a->top;
+			min = a->top->value;
+			// printf("first_min = %d\n", min);
+			j = 1;
+			while (chunk_len - i > j)
+			{
+				if (min > node->value)
+					min = node->value;
+				node = node->next;
+				j++;
+			}
+			// printf("min_after_check_chunk =%d\n", min);
+			// bスタックから探す
+			if (b->top)
+			{
+				b_min = get_min_value(b);
+				if (b_min < min)
+					min = b_min;
+			}
+			// printf("b_min = %d\n", b_min);
+			// printf("new_min = %d\n", min);
+		}
 		else
+		{
+
 			push_b(a, b);
+		}
 		i++;
 	}
 }
