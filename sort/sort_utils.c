@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/23 22:21:12 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/25 18:11:41 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ void	split_a_stack(t_stack *a, t_stack *b, int len, t_stack *unsorted_nums_list)
 {
 	int		pivot;
 	int		*nums;
+	int		min;
 
 	nums = sort_nums(a);
 	pivot = choice_pivot(nums, len);
@@ -278,11 +279,37 @@ int get_min_value(t_stack *stack)
 void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
 	int	chunk_len;
+	int min;
+	t_node *node;
+	int i;
 
 	chunk_len = pop_chunk(unsorted_list);
-	while (chunk_len)
+	if (chunk_len == 2)
 	{
-		push_b(a, b);
-		chunk_len --;
+		sort_two_values(a, swap_a);
+		rotate_a(a);
+		rotate_a(a);
+		return ;
+	}
+	// chunk内の最小値を見つける
+	min = a->top->value;
+	node = a->top->next;
+	i = 0;
+	while (chunk_len > i)
+	{
+		if (min > node->value)
+			min = node->value;
+		node = node->next;
+		i++;
+	}
+	i = 0;
+	while (chunk_len > i)
+	{
+		// そのchunkの最小値はスタックaの末尾に移動する
+		if (a->top->value == min)
+			rotate_a(a);
+		else
+			push_b(a, b);
+		i++;
 	}
 }
