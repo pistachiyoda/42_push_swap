@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:29:39 by mai               #+#    #+#             */
-/*   Updated: 2021/12/25 18:11:41 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/25 22:30:15 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 	// chunk内の最小値を見つける
 	min = a->top->value;
 	node = a->top->next;
-	i = 0;
+	i = 1;
 	while (chunk_len > i)
 	{
 		if (min > node->value)
