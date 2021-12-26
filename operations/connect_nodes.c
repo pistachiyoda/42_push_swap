@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   connect_nodes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 22:09:56 by mai               #+#    #+#             */
-/*   Updated: 2021/11/19 22:10:19 by mai              ###   ########.fr       */
+/*   Created: 2021/12/26 11:17:42 by fmai              #+#    #+#             */
+/*   Updated: 2021/12/26 11:18:18 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// node①のnextをnode②にし、node②のprevをnode①にする
+// node_1のnextをnode_2にし、node_2のprevをnode_1にする
 void	connect_nodes(t_node *node_1, t_node *node_2)
 {
 	node_1->next = node_2;

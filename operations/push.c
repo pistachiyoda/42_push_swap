@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 21:59:33 by mai               #+#    #+#             */
-/*   Updated: 2021/11/19 22:10:33 by mai              ###   ########.fr       */
+/*   Created: 2021/12/26 11:19:33 by fmai              #+#    #+#             */
+/*   Updated: 2021/12/26 16:11:51 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	push(t_stack *to, t_stack *from)
 	handle_to(to, node);
 }
 
-// take the first element at the top of b
-// and put it at the top of a. Do nothing if b is empty
+// take the first element at the top of b and put it at the top of a. 
+// Do nothing if b is empty.
 void	push_a(t_stack *a, t_stack *b)
 {
 	if (b == NULL)
@@ -71,8 +71,8 @@ void	push_a(t_stack *a, t_stack *b)
 	ft_putstr_fd("pa\n", 1);
 }
 
-// take the first element at the top of a
-// and put it at the top of b. Do nothing if a is empty
+// take the first element at the top of a and put it at the top of b.
+// Do nothing if a is empty.
 void	push_b(t_stack *a, t_stack *b)
 {
 	if (a == NULL)
