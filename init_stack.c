@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 22:00:05 by mai               #+#    #+#             */
-/*   Updated: 2021/12/23 22:15:11 by mai              ###   ########.fr       */
+/*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
+/*   Updated: 2021/12/26 23:16:42 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	push_chunk(t_stack *stack, int value)
 	}
 }
 
-int		pop_chunk(t_stack *stack)
+int	pop_chunk(t_stack *stack)
 {
 	t_node	*chunk;
 	int		chunk_val;
@@ -50,10 +50,6 @@ int		pop_chunk(t_stack *stack)
 		connect_nodes(stack->bottom, stack->top);
 	}
 	chunk_val = chunk->value;
-
-	// printf("---free--\n");
-	// free(chunk);
-	// printf("---return--\n");
 	return (chunk_val);
 }
 
