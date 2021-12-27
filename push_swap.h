@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:14:09 by mai               #+#    #+#             */
-/*   Updated: 2021/12/23 01:00:07 by mai              ###   ########.fr       */
+/*   Updated: 2021/12/27 22:31:24 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,21 @@ void	rotate_multi(t_stack *stack, int num, void (*rotate)(t_stack *));
 void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len);
 void	sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len);
 
-// sort/sort_utils.c
-void	print_stack(t_stack *stack); // 後で消す
+// sort/sort_utils1.c
 bool	is_sorted(t_stack *stack);
 int	get_min_index(t_stack *stack);
-void	print_stack(t_stack *stack);
 int	choice_pivot(int *nums, int cnt);
+int *sort_nums(t_stack *stack);
+
+// sort/sort_utils2.c
 void	split_a_stack(t_stack *a, t_stack *b, int len, t_stack *unsorted_list);
 void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list);
 bool	is_splittable(t_stack *stack);
 void	add_min_values(t_stack *a, t_stack *b, int b_len);
+
+// sort/sort_utils3.c
 void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list);
+
+// sort/sort_utils4.c
+int	get_min_value(t_stack *stack);
 #endif
