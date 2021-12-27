@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small_values.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mai <mai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 14:15:36 by mai               #+#    #+#             */
-/*   Updated: 2021/12/20 22:57:31 by mai              ###   ########.fr       */
+/*   Created: 2021/12/27 23:36:56 by fmai              #+#    #+#             */
+/*   Updated: 2021/12/27 23:36:59 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,30 @@ void	sort_three_values(
 	void (*rotate)(t_stack *), void (*rev_rotate)(t_stack *)
 )
 {
-	t_node	*first;
-	t_node	*second;
-	t_node	*third;
+	t_node	*one;
+	t_node	*two;
+	t_node	*three;
 
-	first = stack->top;
-	second = stack->top->next;
-	third = stack->bottom;
-	if (first->value < second->value && second->value < third->value)
-		return;
-	if (first->value > second->value
-		&& second->value < third->value
-		&& third->value > first->value)
+	one = stack->top;
+	two = stack->top->next;
+	three = stack->bottom;
+	if (one->value < two->value && two->value < three->value)
+		return ;
+	if (one->value > two->value && two->value < three->value
+		&& three->value > one->value)
 		return (swap(stack));
-	if (first->value > second->value
-		&& second->value > third->value
-		&& third->value < first->value)
-	{
-		swap(stack);
-		return (rev_rotate(stack));
-	}
-	if (first->value > second->value
-		&& second->value < third->value
-		&& third->value < first->value)
+	if (one->value > two->value && two->value < three->value
+		&& three->value < one->value)
 		return (rotate(stack));
-	if (first->value < second->value
-		&& second->value > third->value
-		&& third->value > first->value)
+	if (one->value < two->value && two->value > three->value
+		&& three->value > one->value)
 	{
 		swap(stack);
 		return (rotate(stack));
 	}
+	if (one->value > two->value && two->value > three->value
+		&& three->value < one->value)
+		swap(stack);
 	return (rev_rotate(stack));
 }
 
