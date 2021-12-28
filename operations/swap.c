@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:18:00 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/26 16:40:53 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/28 15:27:32 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	swap_top(t_stack *stack)
 	t_node	*top_to_second;
 	t_node	*second_to_top;
 	t_node	*third;
-	t_node	*bottom;
 	int		stack_size;
 
 	stack_size = cnt_dllist(stack);

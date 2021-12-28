@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:58:17 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/27 22:04:06 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/28 15:29:06 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	split_a_stack(
 {
 	int		pivot;
 	int		*nums;
-	int		min;
 
 	nums = sort_nums(a);
 	pivot = choice_pivot(nums, len);
@@ -40,7 +39,6 @@ void	split_a_stack(
 void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
 	int		pivot;
-	t_node	*node;
 	int		len;
 	int		*nums;
 

@@ -5,7 +5,7 @@ CFILES = main.c init_stack.c\
 		./sort/quicksort.c ./sort/sort_small_values.c ./sort/sort_utils1.c ./sort/sort_utils2.c ./sort/sort_utils3.c\
 		./sort/sort_utils4.c ./operations/connect_nodes.c\
 	
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 OBJ = $(CFILES:.c=.o)
 LIBFT_PATH = ./42_libft_new/
 

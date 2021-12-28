@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/28 00:55:28 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/28 15:24:36 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ bool	has_duplicate(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_node	*node;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 

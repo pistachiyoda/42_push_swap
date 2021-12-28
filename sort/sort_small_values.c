@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:36:56 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/27 23:36:59 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/28 15:28:19 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len)
 {
 	int		i;
 	int		min_index;
-	t_node	*node;
 
 	i = 0;
 	while (i < len - 3)
@@ -91,7 +90,6 @@ void	sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len)
 {
 	int		i;
 	int		min_index;
-	t_node	*node;
 
 	i = 0;
 	while (i < len - 3)
