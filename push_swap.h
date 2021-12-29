@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/28 15:23:22 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 14:10:17 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	rev_rotate_r(t_stack *a, t_stack *b);
 int		cnt_dllist(t_stack *stack);
 
 // sort/quicksort.c
-void	quicksort(t_stack *a, t_stack *b);
+void	sort(t_stack *a, t_stack *b);
+void	quicksort(t_stack *a, t_stack *b, int a_len);
 
 // sort/sort_small_values.c
 void	sort_two_values(t_stack *stack, void (*swap)(t_stack *));

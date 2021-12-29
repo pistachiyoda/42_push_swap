@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:38:22 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/28 01:06:47 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 14:10:10 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,11 @@ int	handle_b_3_to_6(t_stack *a, t_stack *b, int b_len, t_stack *unsorted_list)
 	return (1);
 }
 
-void	quicksort(t_stack *a, t_stack *b)
+void	quicksort(t_stack *a, t_stack *b, int a_len)
 {
-	int		a_len;
 	int		b_len;
 	t_stack	*unsorted_list;
 
-	a_len = cnt_dllist(a);
-	handle_a_small_vals(a, b, a_len);
 	unsorted_list = (t_stack *)malloc(sizeof(t_stack));
 	split_a_stack(a, b, a_len, unsorted_list);
 	while (cnt_dllist(unsorted_list) >= 0)
@@ -66,4 +63,14 @@ void	quicksort(t_stack *a, t_stack *b)
 			return ;
 		move_unsorted_chunk(a, b, unsorted_list);
 	}
+}
+
+void	sort(t_stack *a, t_stack *b)
+{
+	int		a_len;
+
+	a_len = cnt_dllist(a);
+	if (a_len <= 6)
+		return (handle_a_small_vals(a, b, a_len));
+	return (quicksort(a, b, a_len));
 }
