@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:58:17 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/28 15:29:06 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:14:41 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	split_a_stack(
 		len--;
 	}
 	push_chunk(unsorted_nums_list, cnt_dllist(a));
+	free(nums);
 }
 
 // スタックbの値をa(大)とb(小)に分割
