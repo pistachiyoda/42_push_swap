@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:58:17 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 22:14:41 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:33:08 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 			rotate_b(b);
 		len--;
 	}
+	free(nums);
 }
 
 // スタックの内容が分割可能（７以上）ならtrue, なっていなかったらfalseを返す

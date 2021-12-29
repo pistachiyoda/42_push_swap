@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/26 23:16:42 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:33:37 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	pop_chunk(t_stack *stack)
 		connect_nodes(stack->bottom, stack->top);
 	}
 	chunk_val = chunk->value;
+	free(chunk);
 	return (chunk_val);
 }
 
