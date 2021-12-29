@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:38:22 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 14:10:10 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:39:01 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ void	quicksort(t_stack *a, t_stack *b, int a_len)
 		{
 			if (handle_b_3_to_6(a, b, b_len, unsorted_list) == 1)
 				continue ;
-			return ;
+			return (free(unsorted_list));
 		}
 		add_min_values(a, b, b_len);
 		if (cnt_dllist(b) == 0 && is_sorted(a))
-			return ;
+			return (free(unsorted_list));
 		move_unsorted_chunk(a, b, unsorted_list);
 	}
+	free(unsorted_list);
 }
 
 void	sort(t_stack *a, t_stack *b)
