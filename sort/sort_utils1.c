@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:39:15 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 22:16:20 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:32:49 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	*sort_nums(t_stack *stack)
 
 	cnt = cnt_dllist(stack);
 	i = 0;
-	nums = (int *)malloc(cnt);
+	nums = (int *)malloc(sizeof(int) * cnt);
 	if (nums == NULL)
 		exit(1);
 	node = stack->top;
