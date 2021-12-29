@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:39:15 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/27 21:57:53 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/29 22:16:20 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,19 @@ int	*selection_sort(int cnt, int *nums)
 {
 	int	i;
 	int	j;
-	int	k;
 	int	min;
 
 	i = 0;
 	while (i < cnt)
 	{
 		min = nums[i];
-		k = i;
 		j = i + 1;
 		while (j < cnt)
 		{
 			if (nums[j] < min)
 			{
 				min = nums[j];
-				k = j;
-				swap(&nums[i], &nums[k]);
+				swap(&nums[i], &nums[j]);
 			}
 			j++;
 		}
@@ -101,6 +98,8 @@ int	*sort_nums(t_stack *stack)
 	cnt = cnt_dllist(stack);
 	i = 0;
 	nums = (int *)malloc(cnt);
+	if (nums == NULL)
+		exit(1);
 	node = stack->top;
 	while (i < cnt)
 	{
