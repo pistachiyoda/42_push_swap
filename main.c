@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 14:11:05 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/31 01:29:39 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 0);
 		return (0);
 	}
-	stack_a = (t_stack *)malloc(sizeof(t_stack));
-	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	stack_a = create_stack();
+	stack_b = create_stack();
 	create_nodes(argc - 1, argv, stack_a);
 	if (is_sorted(stack_a))
 		return (0);

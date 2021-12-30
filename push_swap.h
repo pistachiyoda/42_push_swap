@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 14:10:17 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/31 01:32:33 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ typedef struct s_stack
 	t_node	*bottom;
 }	t_stack;
 
+t_stack	*create_stack(void);
 void	create_nodes(int num, char **num_list, t_stack *stack);
 t_node	*create_node(int value);
 void	connect_nodes(t_node *node_1, t_node *node_2);
+
+// handle_chunk.c
 void	push_chunk(t_stack *stack, int value);
 int		pop_chunk(t_stack *stack);
 

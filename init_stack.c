@@ -6,52 +6,20 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 22:33:37 by fmai             ###   ########.fr       */
+/*   Updated: 2021/12/31 01:32:40 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_chunk(t_stack *stack, int value)
+t_stack	*create_stack(void)
 {
-	t_node	*chunk;
+	t_stack	*stack;
 
-	chunk = create_node(value);
-	if (cnt_dllist(stack) == 0)
-	{
-		stack->top = chunk;
-		stack->bottom = chunk;
-		connect_nodes(chunk, chunk);
-	}
-	else
-	{
-		connect_nodes(stack->bottom, chunk);
-		connect_nodes(chunk, stack->top);
-		stack->top = chunk;
-	}
-}
-
-int	pop_chunk(t_stack *stack)
-{
-	t_node	*chunk;
-	int		chunk_val;
-	int		len;
-
-	len = cnt_dllist(stack);
-	chunk = stack->top;
-	if (len == 1)
-	{
-		stack->top = NULL;
-		stack->bottom = NULL;
-	}
-	else
-	{
-		stack->top = stack->top->next;
-		connect_nodes(stack->bottom, stack->top);
-	}
-	chunk_val = chunk->value;
-	free(chunk);
-	return (chunk_val);
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack->top = NULL;
+	stack->bottom = NULL;
+	return (stack);
 }
 
 t_node	*create_node(int value)
