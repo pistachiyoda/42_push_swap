@@ -10,7 +10,7 @@ OBJ = $(CFILES:.c=.o)
 LIBFT_PATH = ./42_libft_new/
 
 all: $(NAME)
-$(NAME): $(OBJ) libft
+$(NAME): libft $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) ./libft.a -o $(NAME)
 libft:
 	git submodule update -i
