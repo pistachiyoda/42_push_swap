@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 17:26:07 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/01 17:49:42 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ bool	is_int_num(char *arg)
 	sign = 1;
 	if (arg[0] == '-')
 	{
-		i = 1;
 		sign = -1;
+		i = 1;
 	}
+	else if (arg[0] == '+')
+		i = 1;
 	while (arg[i])
 	{
 		if (!(ft_isdigit(arg[i])))
