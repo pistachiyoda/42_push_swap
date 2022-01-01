@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 13:59:20 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/01 17:26:07 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,30 @@ bool	is_valid_num(int argc, char **argv)
 	return (true);
 }
 
-bool	has_duplicate(int argc, char **argv)
+bool	has_duplicate(t_stack *stack)
 {
-	int	i;
-	int	j;
+	int		cnt;
+	int		i;
+	int		j;
+	t_node	*node_1;
+	t_node	*node_2;
 
-	i = 1;
-	while (i < argc)
+	cnt = cnt_dllist(stack);
+	node_1 = stack->top;
+	node_2 = stack->top;
+	i = cnt;
+	while (i)
 	{
-		j = 1;
-		while (j < argc)
+		j = cnt;
+		while (j)
 		{
-			if (i == j)
-			{
-				j ++;
-				continue ;
-			}
-			if (
-				!ft_strncmp(argv[i], argv[j], ft_strlen(argv[i]))
-				&& ft_strlen(argv[i]) == ft_strlen(argv[j])
-			)
+			if (i != j && node_1->value == node_2->value)
 				return (true);
-			j ++;
+			node_2 = node_2->next;
+			j--;
 		}
-		i ++;
+		node_1 = node_1->next;
+		i--;
 	}
 	return (false);
 }
@@ -101,14 +101,14 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 0);
 		return (0);
 	}
-	if (has_duplicate(argc, argv))
+	stack_a = create_stack();
+	stack_b = create_stack();
+	create_nodes(argc - 1, argv, stack_a);
+	if (has_duplicate(stack_a))
 	{
 		ft_putstr_fd("Error\n", 0);
 		return (0);
 	}
-	stack_a = create_stack();
-	stack_b = create_stack();
-	create_nodes(argc - 1, argv, stack_a);
 	if (is_sorted(stack_a))
 		return (0);
 	sort(stack_a, stack_b);
