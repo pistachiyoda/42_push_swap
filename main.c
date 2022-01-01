@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 23:50:55 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/02 00:02:15 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 	stack_b = create_stack();
 	if (stack_a == NULL || stack_b == NULL)
 		free_memories_and_exit(stack_a, stack_b, NULL);
-	create_nodes(argc - 1, argv, stack_a);
+	create_nodes(argc - 1, argv, stack_a, stack_b);
 	if (has_duplicate(stack_a))
 	{
 		ft_putstr_fd("Error\n", 0);

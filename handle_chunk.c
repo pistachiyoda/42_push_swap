@@ -6,17 +6,19 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:26:59 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/31 01:27:03 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/02 00:07:26 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_chunk(t_stack *stack, int value)
+void	push_chunk(t_stack *a, t_stack *b, t_stack *stack, int value)
 {
 	t_node	*chunk;
 
 	chunk = create_node(value);
+	if (chunk == NULL)
+		free_memories_and_exit(a, b, stack);
 	if (cnt_dllist(stack) == 0)
 	{
 		stack->top = chunk;

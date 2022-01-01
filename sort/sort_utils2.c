@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:58:17 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 22:33:08 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/01 23:55:40 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	split_a_stack(
 			rotate_a(a);
 		len--;
 	}
-	push_chunk(unsorted_nums_list, cnt_dllist(a));
+	push_chunk(a, b, unsorted_nums_list, cnt_dllist(a));
 	free(nums);
 }
 
@@ -46,7 +46,7 @@ void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 	len = cnt_dllist(b);
 	nums = sort_nums(b);
 	pivot = choice_pivot(nums, len);
-	push_chunk(unsorted_list, 0);
+	push_chunk(a, b, unsorted_list, 0);
 	while (len)
 	{
 		if (b->top->value == nums[0])

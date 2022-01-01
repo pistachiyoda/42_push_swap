@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 21:41:01 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/02 00:08:51 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	append_node(t_node *first_node, t_node *new_node)
 	new_node->prev = current_node;
 }
 
-void	create_nodes(int num, char **num_list, t_stack *stack)
+void	create_nodes(int num, char **num_list, t_stack *stack_a, t_stack *stack_b)
 {
 	int		value;
 	int		cnt;
@@ -60,16 +60,18 @@ void	create_nodes(int num, char **num_list, t_stack *stack)
 	{
 		value = ft_atoi(*num_list);
 		node = create_node(value);
+		if (node == NULL)
+			free_memories_and_exit(stack_a, stack_b, NULL);
 		if (cnt == 0)
-			stack->top = node;
+			stack_a->top = node;
 		else
-			append_node(stack->top, node);
+			append_node(stack_a->top, node);
 		num_list++;
 		cnt++;
 	}
-	stack->bottom = node;
-	node = stack->top;
-	node->prev = stack->bottom;
-	node = stack->bottom;
-	node->next = stack->top;
+	stack_a->bottom = node;
+	node = stack_a->top;
+	node->prev = stack_a->bottom;
+	node = stack_a->bottom;
+	node->next = stack_a->top;
 }
