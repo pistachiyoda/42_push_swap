@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 23:27:50 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/01 23:45:38 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list);
 // sort/sort_utils4.c
 int		get_min_value(t_stack *stack);
 
-// free_memories.c
-void	free_memories(t_stack *a, t_stack *b, t_stack *unsorted_list);
+// free_memories_and_exit.c
+void	free_memories_and_exit(t_stack *a, t_stack *b, t_stack *unsorted_list);
 #endif
