@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/31 01:32:40 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/01 21:41:01 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_stack	*create_stack(void)
 	t_stack	*stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
 	stack->top = NULL;
 	stack->bottom = NULL;
 	return (stack);
