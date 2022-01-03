@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/02 00:14:45 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/03 21:05:18 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	create_nodes(
 		cnt++;
 	}
 	stack_a->bottom = node;
-	node = stack_a->top;
-	node->prev = stack_a->bottom;
-	node = stack_a->bottom;
-	node->next = stack_a->top;
+	stack_a->top->prev = stack_a->bottom;
+	stack_a->bottom->next = stack_a->top;
 }
