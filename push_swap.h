@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 17:39:40 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 18:09:11 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	sort_less_than_six_values_a(t_stack *a, t_stack *b, int len);
 void	sort_and_push_less_than_six_values_b(t_stack *a, t_stack *b, int len);
 
 // sort/sort_nums.c
-int		*sort_nums(t_stack *stack);
+int		*sort_nums(
+			t_stack *sort_stack, t_stack *ot_stack, t_stack *unsorted_list);
 
 // sort/handle_chunk.c
 void	push_chunk(t_stack *a, t_stack *b, t_stack *stack, int value);
