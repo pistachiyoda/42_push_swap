@@ -11,7 +11,6 @@ all: $(NAME)
 $(NAME): libft $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) ./libft.a -o $(NAME)
 libft:
-	git submodule update -i
 	make -C $(LIBFT_PATH)
 	cp ./42_libft_new/libft.a .
 clean:
