@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:23:08 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:39:08 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:07:24 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ bool	has_duplicate(t_stack *stack)
 	return (false);
 }
 
-int	print_error(void)
+void	free_memories_and_print_error(t_stack *a, t_stack *b)
 {
 	ft_putstr_fd("Error\n", 0);
-	return (0);
+	free_memories_and_exit(a, b, NULL, 1);
 }

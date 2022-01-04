@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 23:16:38 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:39:13 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:09:15 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	create_nodes(
 		value = ft_atoi(*num_list);
 		node = create_node(value);
 		if (node == NULL)
-			free_memories_and_exit(stack_a, stack_b, NULL);
+			free_memories_and_exit(stack_a, stack_b, NULL, 1);
 		if (cnt == 0)
 			stack_a->top = node;
 		else

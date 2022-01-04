@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:15:18 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 18:11:36 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:11:36 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	free_stack(t_stack *stack)
 	free(stack);
 }
 
-void	free_memories_and_exit(t_stack *a, t_stack *b, t_stack *unsorted_list)
+void	free_memories_and_exit(
+	t_stack *a, t_stack *b, t_stack *unsorted_list, int status)
 {
 	if (a)
 		free_stack(a);
@@ -45,5 +46,5 @@ void	free_memories_and_exit(t_stack *a, t_stack *b, t_stack *unsorted_list)
 		free_stack(b);
 	if (unsorted_list)
 		free_stack(unsorted_list);
-	exit(1);
+	exit(status);
 }

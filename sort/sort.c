@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:38:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 17:40:41 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:09:44 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	quicksort(t_stack *a, t_stack *b, int a_len)
 
 	unsorted_list = create_stack();
 	if (unsorted_list == NULL)
-		free_memories_and_exit(a, b, unsorted_list);
+		free_memories_and_exit(a, b, unsorted_list, 1);
 	split_a_stack(a, b, a_len, unsorted_list);
 	while (cnt_dllist(unsorted_list) >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 19:42:52 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:12:00 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,11 @@ bool	is_sorted(t_stack *stack);
 
 // free_memories_and_exit.c
 void	free_stack(t_stack *stack);
-void	free_memories_and_exit(t_stack *a, t_stack *b, t_stack *unsorted_list);
+void	free_memories_and_exit(
+			t_stack *a, t_stack *b, t_stack *unsorted_list, int status);
 
 // handle_invalid_input.c
 bool	is_valid_num(int argc, char **argv);
 bool	has_duplicate(t_stack *stack);
-int		print_error(void);
+void	free_memories_and_print_error(t_stack *a, t_stack *b);
 #endif

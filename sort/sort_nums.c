@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:58:50 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 18:13:00 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:09:53 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	*sort_nums(t_stack *sort_stack, t_stack *ot_stack, t_stack *unsorted_list)
 	i = 0;
 	nums = (int *)malloc(sizeof(int) * cnt);
 	if (nums == NULL)
-		free_memories_and_exit(sort_stack, ot_stack, unsorted_list);
+		free_memories_and_exit(sort_stack, ot_stack, unsorted_list, 1);
 	node = sort_stack->top;
 	while (i < cnt)
 	{

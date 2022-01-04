@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:26:59 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 17:42:13 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 23:10:02 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	push_chunk(t_stack *a, t_stack *b, t_stack *stack, int value)
 
 	chunk = create_node(value);
 	if (chunk == NULL)
-		free_memories_and_exit(a, b, stack);
+		free_memories_and_exit(a, b, stack, 1);
 	if (cnt_dllist(stack) == 0)
 	{
 		stack->top = chunk;
