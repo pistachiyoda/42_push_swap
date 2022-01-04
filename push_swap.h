@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 18:09:11 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 19:42:52 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int		cnt_dllist(t_stack *stack);
 bool	is_sorted(t_stack *stack);
 
 // free_memories_and_exit.c
+void	free_stack(t_stack *stack);
 void	free_memories_and_exit(t_stack *a, t_stack *b, t_stack *unsorted_list);
 
 // handle_invalid_input.c

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:35:03 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/02 20:23:01 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 19:41:48 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ int	main(int argc, char **argv)
 	if (has_duplicate(stack_a))
 		return (print_error());
 	if (is_sorted(stack_a))
+	{
+		system("leaks push_swap");
 		return (0);
+	}
 	sort(stack_a, stack_b);
-	free(stack_a);
-	free(stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	system("leaks push_swap");
 	return (0);
 }
