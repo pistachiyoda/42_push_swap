@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils2.c                                      :+:      :+:    :+:   */
+/*   split_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:58:17 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/01 23:55:40 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 14:58:24 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// スタックaの値をa(大)とb(小)に分割
-// ピボットはb(小)に分類する
-// 初回のみ
+// Select the median value to be pivot from the stack
+int	choice_pivot(int *nums, int cnt)
+{
+	int	mid;
+
+	if ((cnt % 2) == 0)
+		mid = cnt / 2 - 1;
+	else
+		mid = (cnt + 1) / 2 - 1;
+	return (nums[mid]);
+}
+
+// Split stack a by pivot, then push smaller value to stack b.
 void	split_a_stack(
 	t_stack *a, t_stack *b, int len, t_stack *unsorted_nums_list)
 {
@@ -35,8 +45,7 @@ void	split_a_stack(
 	free(nums);
 }
 
-// スタックbの値をa(大)とb(小)に分割
-// ピボットはb(小)に分類する
+// Split stack b by pivot, then push bigger value to stack a.
 void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
 	int		pivot;
@@ -64,25 +73,4 @@ void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list)
 		len--;
 	}
 	free(nums);
-}
-
-// スタックの内容が分割可能（７以上）ならtrue, なっていなかったらfalseを返す
-bool	is_splittable(t_stack *stack)
-{
-	int	cnt;
-
-	cnt = cnt_dllist(stack);
-	if (cnt >= 7)
-		return (true);
-	return (false);
-}
-
-// スタックbの値をaの末尾に追加する
-void	add_min_values(t_stack *a, t_stack *b, int b_len)
-{
-	while (b_len --)
-	{
-		push_a(a, b);
-		rotate_a(a);
-	}
 }

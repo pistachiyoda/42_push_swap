@@ -1,56 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils1.c                                      :+:      :+:    :+:   */
+/*   sort_nums.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 14:39:15 by fmai              #+#    #+#             */
-/*   Updated: 2021/12/29 22:32:49 by fmai             ###   ########.fr       */
+/*   Created: 2022/01/04 14:58:50 by fmai              #+#    #+#             */
+/*   Updated: 2022/01/04 14:59:08 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// スタックの内容がソート済みになっていたらtrue, なっていなかったらfalseを返す
-bool	is_sorted(t_stack *stack)
-{
-	t_node	*node;
-
-	node = stack->top;
-	while (node->next != stack->top)
-	{
-		if (node->value > node->next->value)
-			return (false);
-		node = node->next;
-	}
-	return (true);
-}
-
-// スタックの値から最小値の検索して返す
-int	get_min_index(t_stack *stack)
-{
-	int		i;
-	int		min_value;
-	int		min_index;
-	t_node	*node;
-
-	i = 1;
-	min_index = 0;
-	min_value = stack->top->value;
-	node = stack->top->next;
-	while (node != stack->top)
-	{
-		if (node->value < min_value)
-		{
-			min_value = node->value;
-			min_index = i;
-		}
-		i++;
-		node = node->next;
-	}
-	return (min_index);
-}
 
 void	swap(int *x, int *y)
 {
@@ -61,7 +21,6 @@ void	swap(int *x, int *y)
 	*y = tmp;
 }
 
-// cnt個の数字の配列numsを昇順に選択ソートして返す
 int	*selection_sort(int cnt, int *nums)
 {
 	int	i;
@@ -87,7 +46,7 @@ int	*selection_sort(int cnt, int *nums)
 	return (nums);
 }
 
-// スタックの値を昇順にソート済みの配列の形にして返す
+// Return the stack values in the form of a sorted array in ascending order.
 int	*sort_nums(t_stack *stack)
 {
 	int		cnt;
@@ -98,7 +57,7 @@ int	*sort_nums(t_stack *stack)
 	cnt = cnt_dllist(stack);
 	i = 0;
 	nums = (int *)malloc(sizeof(int) * cnt);
-	if (nums == NULL)
+	if (nums == NULL) // crash対応必要かも
 		exit(1);
 	node = stack->top;
 	while (i < cnt)

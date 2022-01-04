@@ -6,11 +6,11 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:23:08 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/02 20:23:12 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 15:39:08 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
 bool	is_int_range(char str_num, int sign, long long val)
 {
