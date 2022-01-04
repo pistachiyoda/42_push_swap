@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:23:08 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 23:26:42 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/05 00:25:55 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ bool	is_valid_num(int argc, char **argv)
 	while (argc-- - 1 > 0)
 	{
 		if (ft_strlen(argv[i]) == 0)
+			return (false);
+		if (ft_strlen(argv[i]) == 1 && (argv[i][0] == '-' || argv[i][0] == '+'))
 			return (false);
 		if (!is_int_num(argv[i]))
 			return (false);
