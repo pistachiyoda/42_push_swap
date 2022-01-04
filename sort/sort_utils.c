@@ -6,13 +6,13 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:39:15 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:27:20 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:26:20 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// スタックの値から最小値の検索して返す
+// Return minimum values's index from the stack.
 int		get_min_index(t_stack *stack)
 {
 	int		i;
@@ -37,7 +37,8 @@ int		get_min_index(t_stack *stack)
 	return (min_index);
 }
 
-// スタックの内容が分割可能（７以上）ならtrue, なっていなかったらfalseを返す
+// Return true if the contents of the stack are divisible (7 or more),
+// false if they are not.
 bool	is_splittable(t_stack *stack)
 {
 	int	cnt;
@@ -48,7 +49,7 @@ bool	is_splittable(t_stack *stack)
 	return (false);
 }
 
-// スタックbの値をaの末尾に追加する
+// Add values from stack b to stack a's last.
 void	add_min_values(t_stack *a, t_stack *b, int b_len)
 {
 	while (b_len --)
@@ -70,7 +71,7 @@ void	handle_b_min(t_stack *b, int *min)
 	}
 }
 
-// stack中の最小値を返す
+// Return minimum value in the stack.
 int		get_min_value(t_stack *stack)
 {
 	t_node	*node;

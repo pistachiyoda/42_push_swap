@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:26:59 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:07:56 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:22:46 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	push_chunk(t_stack *a, t_stack *b, t_stack *stack, int value)
 	}
 }
 
+// Remove top node(chunk) of unsorted_list and return that value.
 int	pop_chunk(t_stack *stack)
 {
 	t_node	*chunk;
@@ -56,6 +57,8 @@ int	pop_chunk(t_stack *stack)
 	return (chunk_val);
 }
 
+// Move the values in the chunk to stack b.
+// If minimum value turned out, just rotate and put it to stack a's last.
 void	handle_unsorted_chunk_node(
 	t_stack *a, t_stack *b, int min, int chunk_len)
 {
@@ -94,7 +97,7 @@ void	handle_unsorted_chunk_len2(t_stack *a)
 	return ;
 }
 
-// ソートされていない一番上にあるチャンクをstack_bに移動
+// Move the top unsorted chunk to stack_b.
 void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 {
 	int		chunk_len;
