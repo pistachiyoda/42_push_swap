@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:26:59 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 17:22:46 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:42:13 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,3 @@ void	move_unsorted_chunk(t_stack *a, t_stack *b, t_stack *unsorted_list)
 	}
 	handle_unsorted_chunk_node(a, b, min, chunk_len);
 }
-

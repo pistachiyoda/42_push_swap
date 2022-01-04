@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:58:50 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 14:59:08 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:41:31 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	*selection_sort(int cnt, int *nums)
 	return (nums);
 }
 
+// crash対応
 // Return the stack values in the form of a sorted array in ascending order.
 int	*sort_nums(t_stack *stack)
 {
@@ -57,7 +58,7 @@ int	*sort_nums(t_stack *stack)
 	cnt = cnt_dllist(stack);
 	i = 0;
 	nums = (int *)malloc(sizeof(int) * cnt);
-	if (nums == NULL) // crash対応必要かも
+	if (nums == NULL)
 		exit(1);
 	node = stack->top;
 	while (i < cnt)

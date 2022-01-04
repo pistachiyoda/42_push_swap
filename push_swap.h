@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 15:20:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:34:47 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:39:40 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	sort(t_stack *a, t_stack *b);
 void	quicksort(t_stack *a, t_stack *b, int a_len);
 
 // sort/split_stack.c
-void	split_a_stack(t_stack *a, t_stack *b, int len, t_stack *unsorted_nums_list);
+void	split_a_stack(
+			t_stack *a, t_stack *b, int len, t_stack *unsorted_nums_list);
 void	split_b_stack(t_stack *a, t_stack *b, t_stack *unsorted_list);
 
 // sort/sort_utils.c

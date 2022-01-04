@@ -6,14 +6,14 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:39:15 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 17:26:20 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:41:56 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 // Return minimum values's index from the stack.
-int		get_min_index(t_stack *stack)
+int	get_min_index(t_stack *stack)
 {
 	int		i;
 	int		min_value;
@@ -72,7 +72,7 @@ void	handle_b_min(t_stack *b, int *min)
 }
 
 // Return minimum value in the stack.
-int		get_min_value(t_stack *stack)
+int	get_min_value(t_stack *stack)
 {
 	t_node	*node;
 	int		min;

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:38:22 by fmai              #+#    #+#             */
-/*   Updated: 2022/01/04 15:25:21 by fmai             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:40:41 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	handle_b_small_vals(t_stack *a, t_stack *b, int b_len)
 		sort_three_values(b, swap_b, rotate_b, rev_rotate_b);
 }
 
-int		handle_b_3_to_6(t_stack *a, t_stack *b, int b_len, t_stack *unsorted_list)
+int	handle_b_3_to_6(
+		t_stack *a, t_stack *b, int b_len, t_stack *unsorted_list)
 {
 	sort_and_push_less_than_six_values_b(a, b, b_len);
 	if (cnt_dllist(b) == 0 && is_sorted(a))
